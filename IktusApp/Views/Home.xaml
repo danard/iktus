@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IktusApp.Views.Home"
+             Title="Fer nou anàlisi">
+  <VerticalStackLayout>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="500"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <ProgressBar Grid.Row="1" IsEnabled="False" ProgressColor="Orange" />
+      
+      
+    </Grid>
+  </VerticalStackLayout>
+</ContentPage>
