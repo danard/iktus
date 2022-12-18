@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IktusApp.Views.UltimsAnalisis"
+             xmlns:viewmodels="clr-namespace:IktusApp.ViewModels"
+             xmlns:models="clr-namespace:IktusApp.Models"
+             x:DataType="viewmodels:UltimsAnalisisViewModel"
+             Title="Últims Anàlisis">
+  <ContentPage.BindingContext>
+    <viewmodels:UltimsAnalisisViewModel/>
+  </ContentPage.BindingContext>
+  
+  <Grid Padding="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Label Text="Llista de tots els anàlisis anteriors"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+    <CollectionView ItemsSource="{Binding ListAnalysis}"
+                    Grid.Row="1">
+      <CollectionView.ItemsLayout>
+        <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="10"/>
+      </CollectionView.ItemsLayout>
+
+      <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="models:ECG">
+          <Border MinimumHeightRequest="200"
+                  Stroke="#efefef">
+            <HorizontalStackLayout>
+              <Label Text="{Binding Date}"/>
+              <Image Source="fitbit.png"/>
+              <Button Text="Obrir anàlisis" CommandParameter="{Binding CSVFile}"/>
+            </HorizontalStackLayout>
+          </Border>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+    
+
+  </Grid>
+</ContentPage>

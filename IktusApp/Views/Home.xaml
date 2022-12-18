@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IktusApp.Views.Home"
+             xmlns:viewmodels="clr-namespace:IktusApp.ViewModels"
+             xmlns:models="clr-namespace:IktusApp.Models"
+             x:DataType="viewmodels:ECGViewModel"
+             Title="Fer nou anàlisi">
+  <ContentPage.BindingContext>
+    <viewmodels:ECGViewModel/>
+  </ContentPage.BindingContext>
+  <VerticalStackLayout>
+    <Grid Padding="16">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="500"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <HorizontalStackLayout Padding="10">
+        <Button Text="Començar nou anàlisi" BackgroundColor="PaleGreen" 
+              Command="{Binding SendNewAnalysisCommand}" Margin="60,0,0,0"/>
+        <ActivityIndicator IsRunning="{Binding IsLoading}" Color="PaleGreen"/>
+      </HorizontalStackLayout>
+
+      <HorizontalStackLayout BackgroundColor="AliceBlue" Grid.Row="1">
+        <Label Text="Risc de ictus:" FontSize="Large" Padding="20" VerticalOptions="Center"/>
+        <Label Text="{Binding LastResult, TargetNullValue=NA}" FontSize="Header" TextColor="IndianRed" VerticalOptions="Center"/>
+      </HorizontalStackLayout>
+
+    </Grid>
+  </VerticalStackLayout>
+</ContentPage>

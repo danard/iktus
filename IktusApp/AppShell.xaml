@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="IktusApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:IktusApp"
+    xmlns:views="clr-namespace:IktusApp.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+  <TabBar>
+    <ShellContent Title="Resultats" Icon="Resources/AppIcon/logo.png" ContentTemplate="{DataTemplate views:Home}"/>
+    <ShellContent Title="Lectures" Icon="Resources/AppIcon/logo.png" ContentTemplate="{DataTemplate views:UltimsAnalisis}"/>
+    <ShellContent Title="Configuració" Icon="Resources/AppIcon/logo.png" ContentTemplate="{DataTemplate views:Configuracio}"/>
+
+  </TabBar>
+
+</Shell>
