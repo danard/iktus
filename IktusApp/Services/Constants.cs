@@ -14,6 +14,7 @@ namespace IktusApp.Services
     public static string RestUrl = $"{Scheme}://{Ip}:{Port}/";
 
     //Endpoints
+    public static string endpoint = "iktus/";
 
   }
 }

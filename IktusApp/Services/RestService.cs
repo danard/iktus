@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.Json;
@@ -9,26 +10,26 @@ using IktusApp.Models;
 
 namespace IktusApp.Services
 {
-  internal class RestService
+  internal static class RestService
   {
-    private HttpClient client;
-
-    public async Task SendNewECG(ECG item, bool isNewItem = false)
+    // Gets result of analysis as the return value
+    public static async Task<string> SendNewECG(ECG item)
     {
-      Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+      Uri uri = new Uri(Constants.RestUrl + Constants.endpoint);
 
-      string json = "test";
-      StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+      var ecgToBase64 = Convert.ToBase64String(File.ReadAllBytes(item.CSVFile.FullName));
+      StringContent content = new StringContent(ecgToBase64);
 
       HttpResponseMessage response = null;
-      if (isNewItem)
-      {
-        response = await client.PostAsync(uri, content);
-      }
+      var client = new HttpClient();
+      response = await client.PostAsync(uri, content);
 
       if (response.IsSuccessStatusCode)
       {
-        //Debug.WriteLine(@"\tTodoItem successfully saved.");
-      }}
+        var returnNumber = response.StatusCode.ToString();
+        return returnNumber.Substring(returnNumber.Length - 1);
+      }
+      return "-1";
+    }
   }
 }

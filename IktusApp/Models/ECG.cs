@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace IktusApp.Models
 {
-  internal class ECG
-  {
-    public DateTime Date { get; set; }
-    public FileInfo CSVFile { get; set; }
+  public record ECG
+  (
+    DateTime Date,
+    FileInfo CSVFile,
 
     // Fitbit or AppleWatch
-    public string Type { get; set; }
-
-  }
+    string Type
+  );
 }
