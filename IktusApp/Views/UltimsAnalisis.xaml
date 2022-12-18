@@ -31,7 +31,9 @@
           <Border MinimumHeightRequest="200"
                   Stroke="#efefef">
             <HorizontalStackLayout>
-              <Label 
+              <Label Text="{Binding Date}"/>
+              <Image Source="fitbit.png"/>
+              <!--Button Text="Obrir anàlisis" Command="{Binding OpenPDFFileCommand}" CommandParameter="{Binding CSVFile}"/-->
             </HorizontalStackLayout>
           </Border>
         </DataTemplate>

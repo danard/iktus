@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.Json;
 using IktusApp.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace IktusApp.Services
 {
@@ -26,10 +28,12 @@ namespace IktusApp.Services
 
       if (response.IsSuccessStatusCode)
       {
-        var returnNumber = response.StatusCode.ToString();
-        return returnNumber.Substring(returnNumber.Length - 1);
+        var returnValue = response.Content.ReadAsStringAsync().Result;
+        var jsonNumber = JsonConvert.DeserializeObject(returnValue) as JObject;
+
+        return jsonNumber["value"].Value<string>();
       }
-      return "-1";
+      return "Error de connexió";
     }
   }
 }

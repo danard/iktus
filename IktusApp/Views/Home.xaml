@@ -17,15 +17,15 @@
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <HorizontalStackLayout>
+      <HorizontalStackLayout Padding="10">
         <Button Text="Començar nou anàlisi" BackgroundColor="PaleGreen" 
-              Command="{Binding SendNewAnalysisCommand}" HorizontalOptions="StartAndExpand"/>
+              Command="{Binding SendNewAnalysisCommand}" Margin="60,0,0,0"/>
         <ActivityIndicator IsRunning="{Binding IsLoading}" Color="PaleGreen"/>
       </HorizontalStackLayout>
 
       <HorizontalStackLayout BackgroundColor="AliceBlue" Grid.Row="1">
-        <Label Text="Risc de ictus:" FontSize="Large"/>
-        <Label Text="{Binding LastResult, FallbackValue=NA}" FontSize="Header" TextColor="IndianRed"/>
+        <Label Text="Risc de ictus:" FontSize="Large" Padding="20" VerticalOptions="Center"/>
+        <Label Text="{Binding LastResult, TargetNullValue=NA}" FontSize="Header" TextColor="IndianRed" VerticalOptions="Center"/>
       </HorizontalStackLayout>
 
     </Grid>

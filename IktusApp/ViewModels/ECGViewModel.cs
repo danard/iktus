@@ -1,5 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
+using IktusApp.Messages;
 using IktusApp.Models;
 using IktusApp.Services;
 using System;
@@ -13,15 +16,14 @@ namespace IktusApp.ViewModels
   public partial class ECGViewModel : ObservableObject
   {
     [ObservableProperty]
-    bool isLoading = false;
+    bool _isLoading = false;
 
     [ObservableProperty]
-    string lastResult = null;
+    string _lastResult = null;
 
     private ECG GetRandomECG()
     {
       int id = new Random().Next(1, 5);
-      //var test = new FileInfo(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, $"Resources/InputData/ECG{id}.pdf"));
       var test = new FileInfo(Path.Combine("C:\\Users\\ardevold\\Downloads\\Ictus Files\\EGC Files\\" + $"ecg{id}.pdf"));
 
       return new ECG
@@ -38,8 +40,11 @@ namespace IktusApp.ViewModels
       IsLoading = true;
       try
       {
-        Thread.Sleep(2000);
-        LastResult = await RestService.SendNewECG(GetRandomECG());
+        var ecg = GetRandomECG();
+
+        WeakReferenceMessenger.Default.Send(new MessageManager(ecg));
+
+        LastResult = await RestService.SendNewECG(ecg);
       }
       finally
       {
