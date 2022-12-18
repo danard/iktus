@@ -24,6 +24,10 @@ namespace IktusApp.ViewModels
 
     public void AddECG(ECG ecG)
     {
+      if (ListAnalysis == null)
+      {
+        ListAnalysis = new List<ECG>();
+      }
       ListAnalysis.Add(ecG);
     }
 

@@ -23,7 +23,7 @@ namespace IktusApp.ViewModels
 
     private ECG GetRandomECG()
     {
-      int id = new Random().Next(1, 5);
+      int id = new Random().Next(1, 6);
       var test = new FileInfo(Path.Combine("C:\\Users\\ardevold\\Downloads\\Ictus Files\\EGC Files\\" + $"ecg{id}.pdf"));
 
       return new ECG

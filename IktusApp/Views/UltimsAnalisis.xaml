@@ -33,7 +33,7 @@
             <HorizontalStackLayout>
               <Label Text="{Binding Date}"/>
               <Image Source="fitbit.png"/>
-              <!--Button Text="Obrir anàlisis" Command="{Binding OpenPDFFileCommand}" CommandParameter="{Binding CSVFile}"/-->
+              <Button Text="Obrir anàlisis" CommandParameter="{Binding CSVFile}"/>
             </HorizontalStackLayout>
           </Border>
         </DataTemplate>
