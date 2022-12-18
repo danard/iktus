@@ -1,0 +1,22 @@
+<!--<!DOCTYPE html> 
+<html>  
+    <head>
+        <meta charset="utf-8">
+        <title>Upload CSV</title>
+    </head>
+    <body>
+        <form action="{% url 'iktus' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                {{ form.file }}
+            </p>   
+            <p><input type="submit" value="Upload" /></p>     
+        </form>
+    </body>
+</html>
+-->
+<form action="/your-name/" method="post">
+    <label for="your_name">Your name: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
